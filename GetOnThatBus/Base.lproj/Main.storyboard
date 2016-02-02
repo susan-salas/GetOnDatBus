@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7bU-lT-64n">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,70 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-45-diR">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Nlm-GC-r9M"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cHy-45-diR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Fh-IY-exF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cHy-45-diR" secondAttribute="bottom" id="P6s-Iy-htr"/>
+                            <constraint firstItem="cHy-45-diR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="59" id="QKZ-th-3pf"/>
+                            <constraint firstAttribute="trailing" secondItem="cHy-45-diR" secondAttribute="trailing" id="ywb-Ac-Rtz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="cHy-45-diR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5Fh-IY-exF"/>
+                                <exclude reference="QKZ-th-3pf"/>
+                                <exclude reference="ywb-Ac-Rtz"/>
+                                <exclude reference="P6s-Iy-htr"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="cHy-45-diR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5Fh-IY-exF"/>
+                                <include reference="QKZ-th-3pf"/>
+                                <include reference="ywb-Ac-Rtz"/>
+                                <include reference="P6s-Iy-htr"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="NeJ-qH-bx6"/>
+                    <connections>
+                        <outlet property="mapView" destination="cHy-45-diR" id="cv4-dZ-UlJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1023" y="-373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PT6-zM-bq5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7bU-lT-64n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pPD-9k-Jh4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zI6-yf-4BV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZg-8X-Qcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318" y="-373"/>
         </scene>
     </scenes>
 </document>

@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		36150DD11C61532F0019DEDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36150DD01C61532F0019DEDB /* AppDelegate.swift */; };
-		36150DD31C61532F0019DEDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36150DD21C61532F0019DEDB /* ViewController.swift */; };
 		36150DD61C6153300019DEDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36150DD41C6153300019DEDB /* Main.storyboard */; };
 		36150DD81C6153300019DEDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36150DD71C6153300019DEDB /* Assets.xcassets */; };
 		36150DDB1C6153300019DEDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36150DD91C6153300019DEDB /* LaunchScreen.storyboard */; };
+		36150DE31C61533E0019DEDB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36150DE21C61533E0019DEDB /* MapKit.framework */; };
+		36150DE51C6153700019DEDB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36150DE41C6153700019DEDB /* RootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		36150DCD1C61532F0019DEDB /* GetOnThatBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetOnThatBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36150DD01C61532F0019DEDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		36150DD21C61532F0019DEDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		36150DD51C6153300019DEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36150DD71C6153300019DEDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36150DDA1C6153300019DEDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36150DDC1C6153300019DEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36150DE21C61533E0019DEDB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		36150DE41C6153700019DEDB /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../RootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36150DE31C61533E0019DEDB /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +41,7 @@
 		36150DC41C61532F0019DEDB = {
 			isa = PBXGroup;
 			children = (
+				36150DE21C61533E0019DEDB /* MapKit.framework */,
 				36150DCF1C61532F0019DEDB /* GetOnThatBus */,
 				36150DCE1C61532F0019DEDB /* Products */,
 			);
@@ -54,8 +58,8 @@
 		36150DCF1C61532F0019DEDB /* GetOnThatBus */ = {
 			isa = PBXGroup;
 			children = (
+				36150DE41C6153700019DEDB /* RootViewController.swift */,
 				36150DD01C61532F0019DEDB /* AppDelegate.swift */,
-				36150DD21C61532F0019DEDB /* ViewController.swift */,
 				36150DD41C6153300019DEDB /* Main.storyboard */,
 				36150DD71C6153300019DEDB /* Assets.xcassets */,
 				36150DD91C6153300019DEDB /* LaunchScreen.storyboard */,
@@ -135,7 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36150DD31C61532F0019DEDB /* ViewController.swift in Sources */,
+				36150DE51C6153700019DEDB /* RootViewController.swift in Sources */,
 				36150DD11C61532F0019DEDB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
