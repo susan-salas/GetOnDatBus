@@ -9,8 +9,10 @@
 import UIKit
 import MapKit
 
-class RootViewController: UIViewController, MKMapViewDelegate {
+class RootViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var mapView: MKMapView!
     var stopsDictionary = NSDictionary()
     var arrayOfStops = [NSDictionary]()
@@ -20,9 +22,12 @@ class RootViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        segmentedControl.layer.cornerRadius = 5;
         
         self.averageLatitude = 0.0
+        
         self.averageLongitude = 0.0
+        
         let url = NSURL(string: "https://s3.amazonaws.com/mmios8week/bus.json")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
@@ -33,6 +38,7 @@ class RootViewController: UIViewController, MKMapViewDelegate {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.mapView.reloadInputViews()
                     self.loadStops()
+                    self.tableView.reloadData()
                 })
             }
             catch let error as NSError {
@@ -40,25 +46,25 @@ class RootViewController: UIViewController, MKMapViewDelegate {
             }
         }
         task.resume()
-        
+        self.tableView.reloadData()
     }
 
     func loadStops(){
         
         for stop in self.arrayOfStops{
-        let stopAnnotation = MKPointAnnotation()
-        let longitude = Double (stop.objectForKey("longitude")! as! String)
-        let latitude = Double (stop.objectForKey("latitude")! as! String)
+            let stopAnnotation = MKPointAnnotation()
+            let longitude = Double (stop.objectForKey("longitude")! as! String)
+            let latitude = Double (stop.objectForKey("latitude")! as! String)
         
-        self.averageLatitude = self.averageLatitude + latitude!
-        self.averageLongitude = self.averageLongitude + longitude!
+            self.averageLatitude = self.averageLatitude + latitude!
+            self.averageLongitude = self.averageLongitude + longitude!
             
         
-        stopAnnotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-        self.mapView.addAnnotation(stopAnnotation)
-        stopAnnotation.title = stop.objectForKey("cta_stop_name") as? String
-        stopAnnotation.subtitle = stop.objectForKey("stop_id") as? String
-        print(longitude, latitude)
+            stopAnnotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+            self.mapView.addAnnotation(stopAnnotation)
+            stopAnnotation.title = stop.objectForKey("cta_stop_name") as? String
+            stopAnnotation.subtitle = stop.objectForKey("stop_id") as? String
+            //print(longitude, latitude)
         }
         
         let totalStops = Double (self.arrayOfStops.count)
@@ -80,20 +86,37 @@ class RootViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        print(view)
         performSegueWithIdentifier("mapViewToDetail", sender: view)
 
     }
-
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
+        let busStops = self.arrayOfStops[indexPath.row] as NSDictionary
+        cell.textLabel?.text = busStops.objectForKey("cta_stop_name") as? String
+        cell.detailTextLabel?.text = busStops.objectForKey("routes") as? String
+        return cell
     }
-    */
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.arrayOfStops.count
+    }
+    
+    @IBAction func segmentedControlTapped(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            mapView.hidden = false
+        } else {
+            mapView.hidden = true
+        }
+    }
+
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let destination = segue.destinationViewController as! DetailViewController
+//        destination.name = (sender?.objectForKey("name"))! as! String
+        
+    }
+
 
 }

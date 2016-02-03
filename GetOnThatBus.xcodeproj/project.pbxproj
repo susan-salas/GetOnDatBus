@@ -14,6 +14,7 @@
 		36150DE31C61533E0019DEDB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36150DE21C61533E0019DEDB /* MapKit.framework */; };
 		36150DE51C6153700019DEDB /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36150DE41C6153700019DEDB /* RootViewController.swift */; };
 		36150DE71C6185AB0019DEDB /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36150DE61C6185AB0019DEDB /* CustomAnnotation.swift */; };
+		7B823C381C618DB500FA1CCB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B823C371C618DB500FA1CCB /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		36150DE21C61533E0019DEDB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		36150DE41C6153700019DEDB /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../RootViewController.swift; sourceTree = "<group>"; };
 		36150DE61C6185AB0019DEDB /* CustomAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		7B823C371C618DB500FA1CCB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				36150DE41C6153700019DEDB /* RootViewController.swift */,
 				36150DE61C6185AB0019DEDB /* CustomAnnotation.swift */,
+				7B823C371C618DB500FA1CCB /* DetailViewController.swift */,
 				36150DD01C61532F0019DEDB /* AppDelegate.swift */,
 				36150DD41C6153300019DEDB /* Main.storyboard */,
 				36150DD71C6153300019DEDB /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				36150DE51C6153700019DEDB /* RootViewController.swift in Sources */,
 				36150DD11C61532F0019DEDB /* AppDelegate.swift in Sources */,
 				36150DE71C6185AB0019DEDB /* CustomAnnotation.swift in Sources */,
+				7B823C381C618DB500FA1CCB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +296,7 @@
 				36150DE11C6153300019DEDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

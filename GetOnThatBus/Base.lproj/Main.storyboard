@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7bU-lT-64n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7bU-lT-64n">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RootViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="RootViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,18 +18,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N5y-9c-oxA">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="wM4-vE-A2X" detailTextLabel="Xmr-uS-ngO" style="IBUITableViewCellStyleSubtitle" id="2fE-Ue-2LL">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2fE-Ue-2LL" id="9Oi-X3-1b2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wM4-vE-A2X">
+                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xmr-uS-ngO">
+                                                    <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UfU-ZN-bWG"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nSa-aE-35f"/>
+                                </connections>
+                            </tableView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cHy-45-diR">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Nlm-GC-r9M"/>
                                 </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DdM-v9-ckl">
+                                <rect key="frame" x="67" y="532" width="466" height="29"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Ml9-zl-2wA"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Map"/>
+                                    <segment title="List"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="lEX-dE-bqK"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="N5y-9c-oxA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="2lG-78-h0B"/>
                             <constraint firstItem="cHy-45-diR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Fh-IY-exF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="N5y-9c-oxA" secondAttribute="bottom" id="EkY-I2-s05"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N5y-9c-oxA" secondAttribute="trailing" constant="-20" id="ILt-5O-C4B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DdM-v9-ckl" secondAttribute="trailing" constant="47" id="IdI-va-RUN"/>
+                            <constraint firstItem="N5y-9c-oxA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KbT-yk-KLj"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cHy-45-diR" secondAttribute="bottom" id="P6s-Iy-htr"/>
                             <constraint firstItem="cHy-45-diR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="59" id="QKZ-th-3pf"/>
+                            <constraint firstItem="DdM-v9-ckl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="47" id="nKm-Vs-eiR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DdM-v9-ckl" secondAttribute="bottom" constant="40" id="txM-kp-DTW"/>
                             <constraint firstAttribute="trailing" secondItem="cHy-45-diR" secondAttribute="trailing" id="ywb-Ac-Rtz"/>
                         </constraints>
                         <variation key="default">
@@ -57,6 +113,8 @@
                     <navigationItem key="navigationItem" id="NeJ-qH-bx6"/>
                     <connections>
                         <outlet property="mapView" destination="cHy-45-diR" id="cv4-dZ-UlJ"/>
+                        <outlet property="segmentedControl" destination="DdM-v9-ckl" id="J4p-2C-YRl"/>
+                        <outlet property="tableView" destination="N5y-9c-oxA" id="lMH-OV-Nle"/>
                         <segue destination="9lE-QW-bEX" kind="show" identifier="mapViewToDetail" id="3aL-0H-saX"/>
                     </connections>
                 </viewController>
@@ -64,15 +122,16 @@
             </objects>
             <point key="canvasLocation" x="1023" y="-373"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="efY-LA-VdP">
             <objects>
-                <viewController id="9lE-QW-bEX" sceneMemberID="viewController">
+                <viewController id="9lE-QW-bEX" customClass="DetailViewController" customModule="GetOnThatBus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NQJ-Rh-LDF"/>
                         <viewControllerLayoutGuide type="bottom" id="aZ3-ed-bJ2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kwz-0q-7Wz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
