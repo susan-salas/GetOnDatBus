@@ -57,11 +57,29 @@
                     <navigationItem key="navigationItem" id="NeJ-qH-bx6"/>
                     <connections>
                         <outlet property="mapView" destination="cHy-45-diR" id="cv4-dZ-UlJ"/>
+                        <segue destination="9lE-QW-bEX" kind="show" identifier="mapViewToDetail" id="3aL-0H-saX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1023" y="-373"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="efY-LA-VdP">
+            <objects>
+                <viewController id="9lE-QW-bEX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NQJ-Rh-LDF"/>
+                        <viewControllerLayoutGuide type="bottom" id="aZ3-ed-bJ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kwz-0q-7Wz">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XVg-9v-v22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728" y="-373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PT6-zM-bq5">

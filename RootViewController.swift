@@ -15,10 +15,14 @@ class RootViewController: UIViewController, MKMapViewDelegate {
     var stopsDictionary = NSDictionary()
     var arrayOfStops = [NSDictionary]()
     let locationManager = CLLocationManager()
+    var averageLatitude = Double()
+    var averageLongitude = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.averageLatitude = 0.0
+        self.averageLongitude = 0.0
         let url = NSURL(string: "https://s3.amazonaws.com/mmios8week/bus.json")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url!) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
@@ -46,16 +50,40 @@ class RootViewController: UIViewController, MKMapViewDelegate {
         let longitude = Double (stop.objectForKey("longitude")! as! String)
         let latitude = Double (stop.objectForKey("latitude")! as! String)
         
-//        let longitude = -87.6329
-//        let latitude = 41.87808499
-      
+        self.averageLatitude = self.averageLatitude + latitude!
+        self.averageLongitude = self.averageLongitude + longitude!
+            
         
         stopAnnotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
         self.mapView.addAnnotation(stopAnnotation)
         stopAnnotation.title = stop.objectForKey("cta_stop_name") as? String
+        stopAnnotation.subtitle = stop.objectForKey("stop_id") as? String
         print(longitude, latitude)
         }
+        
+        let totalStops = Double (self.arrayOfStops.count)
+        
+        self.averageLatitude = self.averageLatitude / totalStops
+        self.averageLongitude = self.averageLongitude / totalStops - 1.0
+        
+        let averageAnnotation = MKPointAnnotation()
+        averageAnnotation.coordinate = CLLocationCoordinate2DMake(self.averageLatitude, self.averageLongitude)
+        
+        mapView.setRegion(MKCoordinateRegionMake(averageAnnotation.coordinate, MKCoordinateSpanMake(0.4, 0.4)), animated: true)
     }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+        pin.canShowCallout = true
+        pin.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+        return pin
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegueWithIdentifier("mapViewToDetail", sender: view)
+
+    }
+
     
 
     /*
